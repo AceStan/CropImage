@@ -13,7 +13,6 @@ import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewTreeObserver
 import android.widget.FrameLayout
 import android.widget.ImageView
@@ -56,9 +55,8 @@ class CropLayout @JvmOverloads constructor(
             val defaultCropImageView = CropImageView(context, null, 0)
             defaultCropImageView.id = R.id.cropme_image_view
             defaultCropImageView.scaleType = ImageView.ScaleType.FIT_XY
-            defaultCropImageView.adjustViewBounds = true
             defaultCropImageView.layoutParams =
-                LayoutParams(WRAP_CONTENT, WRAP_CONTENT, Gravity.CENTER)
+                LayoutParams(MATCH_PARENT, MATCH_PARENT, Gravity.CENTER)
             addView(defaultCropImageView, 0)
             cropImageView = defaultCropImageView
 
@@ -122,8 +120,8 @@ class CropLayout @JvmOverloads constructor(
                     (totalHeight + frameHeight) / 2f
                 )
 
-                cropImageView.setFrame(frame)
-                cropImageView.requestLayout()
+                // cropImageView.setFrame(frame)
+                // cropImageView.requestLayout()
                 cropOverlay.setFrame(frame)
                 cropOverlay.requestLayout()
                 frameCache = frame
